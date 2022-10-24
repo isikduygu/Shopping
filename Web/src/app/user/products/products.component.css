@@ -1,0 +1,40 @@
+.basket-icon{
+    width: 20px;
+    position: absolute;
+    left:90%;
+    top:20%;
+}
+.basket-area{
+    position: relative;
+    justify-content: end;
+    display: flex;
+    margin-right: 10px;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    margin: 10px;
+}
+.pagination{
+    justify-content: center;
+    display: flex;
+}
+.active{
+    background-color: #ff4081;
+}
+.productImage{
+    object-fit: cover;
+    height: 190px;
+    /* width: 90%;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    padding: 5px; */
+}
+.page-link{
+    color:black
+}

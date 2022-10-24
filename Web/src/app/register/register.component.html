@@ -1,0 +1,169 @@
+<section style="margin-top:2%">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px">
+          <div class="card-body pb-0">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                  Sign up
+                </p>
+
+                <div class="text-danger">{{errorMessage}}</div>
+
+                <form
+                  [formGroup]="registerForm"
+                  class="mx-1 mx-md-4"
+                  (ngSubmit)="submit()"
+                >
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="nameSurname"
+                      >Your Name and Surname</label
+                    >
+                      <input
+                        type="text"
+                        id="nameSurname"
+                        class="form-control"
+                        formControlName="nameSurname"
+                        [ngClass]="{'is-invalid' : registerForm.controls['nameSurname'].invalid && submitted}"
+                      />
+                      <div
+                        *ngIf="
+                          registerForm.controls['nameSurname'].invalid && submitted">
+                        <div
+                          *ngIf="registerForm.controls['nameSurname'].errors"
+                          class="text-danger"
+                        >
+                          Name is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="username">Username</label>
+                      <input
+                        type="text"
+                        id="username"
+                        class="form-control"
+                        formControlName="username"
+                        [ngClass]="{'is-invalid' : registerForm.controls['username'].invalid &&
+                        submitted}"
+                      />
+                      <div
+                        *ngIf="
+                          registerForm.controls['username'].invalid &&
+                          submitted
+                        ">
+                        <div
+                          *ngIf="registerForm.controls['username'].errors"
+                          class="text-danger"
+                        >
+                          Username is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="email">Your Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        formControlName="email"
+                        [ngClass]="{'is-invalid' : registerForm.controls['email'].invalid &&
+                        submitted}"
+                      />
+                      <div
+                        *ngIf="
+                          registerForm.controls['email'].invalid &&
+                          submitted
+                        ">
+                        <div
+                          *ngIf="registerForm.controls['email'].errors"
+                          class="text-danger"
+                        >
+                          E-mail is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="password">Password</label>
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        formControlName="password"
+                        [ngClass]="{'is-invalid' : registerForm.controls['password'].invalid &&
+                        submitted}"
+                      />
+                      <div
+                        *ngIf="
+                          registerForm.controls['password'].invalid &&
+                          submitted
+                        ">
+                        <div
+                          *ngIf="registerForm.controls['password'].errors"
+                          class="text-danger"
+                        >
+                          Password is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <div class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="password">Repeat your password</label>
+                      <input
+                        type="password"
+                        id="passwordConfirm"
+                        class="form-control"
+                        formControlName="passwordConfirm"
+                        [ngClass]="{'is-invalid' : registerForm.controls['passwordConfirm'].invalid &&
+                        submitted}"
+                      />
+                      <div
+                        *ngIf="
+                          registerForm.controls['passwordConfirm'].invalid &&
+                          submitted
+                        ">
+                        <div
+                          *ngIf="registerForm.controls['passwordConfirm'].errors"
+                          class="text-danger"
+                        >
+                          Password confirm is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end mx-4 mb-3 mb-lg-4">
+                    <button mat-button color="accent">Sign in</button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+              >
+              <img width="60%" style="margin: 0 auto;"
+              src="../../assets/shoppingcart.png"
+              class="img-fluid"
+              alt="Sample image"
+            />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

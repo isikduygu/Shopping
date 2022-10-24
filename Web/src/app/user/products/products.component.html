@@ -1,0 +1,61 @@
+<div class="products">
+  <div class="card" style="width: 18rem" *ngFor="let product of products">
+    <img *ngIf="!product.productImageFiles.length"
+      class="card-img-top"
+      src="https://www.creativefabrica.com/wp-content/uploads/2021/02/14/Kawaii-Cute-Milk-Strawberry-Drink-Graphics-8601860-1-312x208.png"
+      alt="Card image cap"
+    />
+    <img *ngIf="product.productImageFiles.length" [src]="baseUrl + '/' + product.productImageFiles[0].path" class="productImage"> 
+    <div class="card-body">
+      <h2 class="card-title">{{ product.name }}</h2>
+      <p class="card-text">{{ product.price | currency: "$" }}</p>
+      <div class="basket-area">
+        <button mat-button color="accent"
+        (click)="addToList(product)"
+        [disabled]="product.stock == 0"
+          >Add to list
+          <img
+            class="basket-icon"
+            src="https://img.icons8.com/dusk/344/shopping-basket-2.png"
+        /></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav aria-label="Page navigation example" class="pagination">
+  <ul class="pagination">
+    <li class="page-item">
+      <a
+        class="page-link"
+        href="#"
+        [routerLink]="[
+          '/products',
+          currentPageNo - 1 <= 0 ? 1 : currentPageNo - 1
+        ]"
+      >
+        &lsaquo;</a
+      >
+    </li>
+    <li class="page-item" *ngFor="let pageNo of pageList">
+      <a
+        class="page-link"
+        href="#"
+        [routerLink]="['/products', pageNo]"
+        routerLinkActive="active"
+        >{{ pageNo }}</a
+      >
+    </li>
+    <li class="page-item">
+      <a
+        class="page-link"
+        href="#"
+        [routerLink]="[
+          '/products',
+          currentPageNo + 1 >= totalPageNo ? totalPageNo : currentPageNo + 1
+        ]"
+        >&rsaquo;</a
+      >
+    </li>
+  </ul>
+</nav>

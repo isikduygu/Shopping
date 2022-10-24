@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Application.BasketService\Application.BasketService.csproj" />
+    <ProjectReference Include="..\..\Core\Domain.BasketService\Domain.BasketService.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Infrastructure.Persistance.BasketService\Infrastructure.Persistance.BasketService.csproj" />
+  </ItemGroup>
+
+</Project>

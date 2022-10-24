@@ -1,0 +1,34 @@
+<button mat-button color="accent" (click)="open(modal)">Add Product</button>
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Add Product</h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body d-flex justify-content-center">
+    <form class="col-6" [formGroup]="addProductForm" (ngSubmit)="addproduct(modal)">
+      <div class="form-group m-2">
+        <label for="productName">Product name</label>
+        <input type="text" class="form-control" id="productName" placeholder="Enter name" formControlName="productName"
+        [ngClass]="{ 'is-invalid': submitted && f['productName'].errors }">
+        <div *ngIf="submitted && f['productName'].errors" class="invalid-feedback">
+          <div>Product name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group m-2">
+          <label for="productPrice">Price</label>
+          <input type="number" class="form-control" id="productPrice" placeholder="Enter price" formControlName="productPrice">
+      </div>
+  
+        <div class="form-group m-2">
+          <label for="stock">Stock</label>
+          <input type="number" class="form-control" id="stock"  placeholder="Enter stock" formControlName="productStock">
+        </div>
+        <div class="modal-footer">
+          <button mat-button color="accent" type="submit">Submit</button>
+        </div>
+  </form>
+  </div>
+</ng-template>
+
+<hr>

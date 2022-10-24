@@ -1,0 +1,37 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Product Photos</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-upload-file
+      [options]="uploadOptions"
+      (OnProductImageAdded)="getImages()"
+    ></app-upload-file>
+  </div>
+
+  <div class="product-image-area">
+    <div *ngFor="let item of productImages" class="product-image-card">
+      <img [src]="item.path" class="product-image" />
+      <div class="delete">
+        <img
+        src="https://img.icons8.com/bubbles/344/trash.png"
+        (click)="deleteImage(item.id)"
+        class="icon"
+      />
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<img
+  src="https://img.icons8.com/bubbles/452/stack-of-photos.png"
+  (click)="open(content)"
+  (click)="getImages()"
+  class="icon"
+/>

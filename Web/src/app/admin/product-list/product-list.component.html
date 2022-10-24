@@ -1,0 +1,39 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stock</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let product of products; let i = index">
+    <tr>
+      <th scope="row">{{product.id}}</th>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.stock }}</td>
+      <td>
+        <app-photo-product
+        [ProductId]="product.id"
+        ></app-photo-product>
+        <app-edit-product
+        (OnProductAdded)="getProducts()"
+          [ProductId]="product.id"
+          [updateName]="product.name"
+          [updatePrice]="product.price"
+          [updateStock]="product.stock"
+        ></app-edit-product>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  (page)="onPageChange()"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>

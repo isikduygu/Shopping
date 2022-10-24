@@ -1,0 +1,15 @@
+@media (min-width: 992px){
+    .mobile-dropdown-menu {
+        left: -70px;
+    }
+}
+.basket-icon{
+    width: 20px;
+    position: absolute;
+    left:70%;
+    top:20%;
+    right: 5px;
+}
+.btn-sm{
+    padding-left:0px;
+}

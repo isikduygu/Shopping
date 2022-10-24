@@ -1,0 +1,63 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title" id="modal-basic-title">Product update</h2>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body d-flex justify-content-center">
+    <form class="col-6" [formGroup]="editProductForm" (ngSubmit)="update(modal)">
+      <div class="form-group m-2">
+        <label for="productName">Product name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          placeholder="Enter new name"
+          formControlName="productName"
+          [(ngModel)]="updateName"
+        />
+      </div>
+
+      <div class="form-group m-2">
+        <label for="productPrice">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="productPrice"
+          placeholder="Enter new price"
+          formControlName="productPrice"
+          [(ngModel)]="updatePrice"
+        />
+      </div>
+
+      <div class="form-group m-2">
+        <label for="stock">Stock</label>
+        <input
+          type="number"
+          class="form-control"
+          id="stock"
+          placeholder="Enter new stock"
+          formControlName="productStock"
+          [(ngModel)]="updateStock"
+        />
+      </div>
+      <div class="modal-footer">
+        <button mat-button color="accent" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<img src="https://img.icons8.com/bubbles/344/edit.png" width="40" height="40" (click)="open(content)"  style="cursor: pointer; margin-right:10px">
+<img src="https://img.icons8.com/bubbles/344/delete-forever.png" width="40" height="40" (click)="delete()"  style="cursor: pointer;" >
+<!-- <mat-icon
+  aria-hidden="false"
+  (click)="open(content)"
+  fontIcon="edit"
+  style="cursor: pointer"
+></mat-icon>
+<mat-icon aria-hidden="false" fontIcon="delete"
+style="cursor: pointer" (click)="delete()"></mat-icon> -->
