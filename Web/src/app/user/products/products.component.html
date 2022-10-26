@@ -5,12 +5,23 @@
       src="https://www.creativefabrica.com/wp-content/uploads/2021/02/14/Kawaii-Cute-Milk-Strawberry-Drink-Graphics-8601860-1-312x208.png"
       alt="Card image cap"
     />
-    <img *ngIf="product.productImageFiles.length" [src]="baseUrl + '/' + product.productImageFiles[0].path" class="productImage"> 
+    <img *ngIf="product.productImageFiles.length == 1" [src]="baseUrl + '/' + product.productImageFiles[0].path" class="productImage"> 
+
+    <ngb-carousel *ngIf="product.productImageFiles.length > 1">
+      <ng-template ngbSlide *ngFor="let path of product.productImageFiles">
+        <div class="picsum-img-wrapper">
+        <img [src]="baseUrl + '/' + path.path" class="productImage">
+        </div>
+      </ng-template>
+    </ngb-carousel>
+
+
     <div class="card-body">
       <h2 class="card-title">{{ product.name }}</h2>
       <p class="card-text">{{ product.price | currency: "$" }}</p>
       <div class="basket-area">
         <button mat-button color="accent"
+        class="button"
         (click)="addToList(product)"
         [disabled]="product.stock == 0"
           >Add to list
@@ -30,7 +41,7 @@
         class="page-link"
         href="#"
         [routerLink]="[
-          '/products',
+          '/',
           currentPageNo - 1 <= 0 ? 1 : currentPageNo - 1
         ]"
       >
@@ -41,7 +52,7 @@
       <a
         class="page-link"
         href="#"
-        [routerLink]="['/products', pageNo]"
+        [routerLink]="['/', pageNo]"
         routerLinkActive="active"
         >{{ pageNo }}</a
       >
@@ -51,7 +62,7 @@
         class="page-link"
         href="#"
         [routerLink]="[
-          '/products',
+          '/',
           currentPageNo + 1 >= totalPageNo ? totalPageNo : currentPageNo + 1
         ]"
         >&rsaquo;</a
@@ -59,3 +70,4 @@
     </li>
   </ul>
 </nav>
+

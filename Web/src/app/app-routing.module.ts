@@ -11,9 +11,9 @@ const routes: Routes = [
   { path: 'products-managment', component: SellerManagmentComponent, canActivate: [AuthGuard]},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'products/:id', component: ProductsComponent },
-  { path: 'cart', component: BasketComponent }
+  { path: '', component: ProductsComponent },
+  { path: ':id', component: ProductsComponent },
+  { path: 'cart', component: BasketComponent, canActivate: [AuthGuard] }
 ]
 
 @NgModule({

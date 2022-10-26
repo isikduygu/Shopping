@@ -1,11 +1,9 @@
 .basket-icon{
     width: 20px;
-    position: absolute;
-    left:90%;
-    top:20%;
+    margin-left: 5px;
+    padding-bottom: 5px;
 }
 .basket-area{
-    position: relative;
     justify-content: end;
     display: flex;
     margin-right: 10px;

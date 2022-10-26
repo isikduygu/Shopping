@@ -1,9 +1,10 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IBasket, IBasketItem } from 'src/app/models/IBasket';
 import { IProduct } from 'src/app/models/IProduct';
 import { IProductImage } from 'src/app/models/IProductImage';
-import { AuthService, _isAuthenticated } from 'src/app/services/auth.service';
+import { _isAuthenticated } from 'src/app/services/auth.service';
 import { BasketService } from 'src/app/services/basket.service';
 import { ProductImageService } from 'src/app/services/product-image.service';
 import { ProductService } from 'src/app/services/products.service';
@@ -15,6 +16,8 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
+  currentBasketItems!: IBasketItem[];
+
   constructor(
     private productsService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -33,8 +36,6 @@ export class ProductsComponent implements OnInit {
   pageList!: number[];
   baseUrl!: string;
 
-  currentStock!: number;
-
   basketItem: IBasketItem = {
     id: 0,
     productName: '',
@@ -48,8 +49,21 @@ export class ProductsComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.controlBasketIsNull(); // If the basket is not empty then add old items to the basket
     this.getProduct();
     this.BaseUrl();
+  }
+
+  controlBasketIsNull(){
+    this.basket.id = localStorage.getItem('userId') as string;
+    this.basketService.getBasket(this.basket.id as any)
+    .subscribe(basket => {
+      if(basket.items.length != 0){
+        basket.items.map(item => {
+          this.basket.items.push(item); // we push old items
+        })
+      }
+    })
   }
 
   getProduct() {
@@ -62,7 +76,6 @@ export class ProductsComponent implements OnInit {
           this.totalCount = response.totalCount;
           this.totalPageNo = Math.ceil(this.totalCount / this.pageSize);
 
-          console.log(this.products);
           this.pageList = [];
 
           if (this.totalPageNo >= 7) {
@@ -104,11 +117,10 @@ export class ProductsComponent implements OnInit {
       productName: product.name,
       price: product.price,
       quantity: 1,
-      pictureUrl: '',
+      pictureUrl: product.productImageFiles.length > 0 ? product.productImageFiles[0].path : '',
     };
     if (_isAuthenticated) {
       this.basket.id = localStorage.getItem('userId') as string;
-
       if (product.stock >= productItem.quantity) {
         let found = false;
         for (var i = 0; i < this.basket.items.length; i++) {
@@ -133,10 +145,8 @@ export class ProductsComponent implements OnInit {
           title: 'Maximum value',
         })
       } else {
-        this.basketService.updateBasket(this.basket).subscribe((response) => {
-          console.log('successfully added');
-          console.log(response);
-        });
+          this.basketService.updateBasket(this.basket).subscribe((response) => {
+          });
       }
     } else {
       this.router.navigate(['/login']);

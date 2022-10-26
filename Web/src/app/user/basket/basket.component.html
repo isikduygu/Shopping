@@ -1,1 +1,41 @@
-<p>basket works!</p>
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Product</th>
+				<th scope="col">Name</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of basketItems; index as i">
+				<th scope="row">{{ i + 1 }}</th>
+				<td>
+					<img
+					*ngIf="item.pictureUrl"
+						[src]="baseUrl + '/' + item.pictureUrl"
+						style="object-fit: cover;
+						height: 80px;"
+					/>
+					<img *ngIf="!item.pictureUrl"
+					style="object-fit: cover;
+					height: 50px;"
+					src="https://www.creativefabrica.com/wp-content/uploads/2021/02/14/Kawaii-Cute-Milk-Strawberry-Drink-Graphics-8601860-1-312x208.png"
+					>
+				</td>
+				<td>{{ item.productName }}</td>
+				<td>{{ item.quantity| number }}</td>
+				<td>{{ item.price | currency }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="basket-buttons">
+		<h3><span><b>Total amount:</b></span> {{amount | currency}}</h3>
+		<button mat-raised-button style="margin-right:10px">Cancel</button>
+		<button mat-raised-button color="accent">Proceed to checkout</button>
+	</div>
+</div>
+  
+  

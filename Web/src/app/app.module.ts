@@ -24,7 +24,7 @@ import { PhotoProductComponent } from './admin/products/photo-product/photo-prod
 import { UploadFileModule } from './admin/upload-file/upload-file.module';
 import { ProductsComponent } from './user/products/products.component';
 import { BasketComponent } from './user/basket/basket.component';
-
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +52,7 @@ import { BasketComponent } from './user/basket/basket.component';
     MatIconModule,
     SweetAlert2Module,
     UploadFileModule,
+    MatCardModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}), // It looks like you're using ngModel on the same form field as formControlName. 
     JwtModule.forRoot({
       config: {
