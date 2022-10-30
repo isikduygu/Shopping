@@ -10,6 +10,5 @@ namespace AuthApp.Domain.Entitites
     public class Customer : BaseEntities
     {
         public string Name { get; set; }
-        public ICollection<Order> Orders { get; set; }
     }
 }

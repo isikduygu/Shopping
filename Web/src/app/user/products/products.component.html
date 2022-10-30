@@ -41,7 +41,7 @@
         class="page-link"
         href="#"
         [routerLink]="[
-          '/',
+          '/products',
           currentPageNo - 1 <= 0 ? 1 : currentPageNo - 1
         ]"
       >
@@ -52,7 +52,7 @@
       <a
         class="page-link"
         href="#"
-        [routerLink]="['/', pageNo]"
+        [routerLink]="['/products', pageNo]"
         routerLinkActive="active"
         >{{ pageNo }}</a
       >
@@ -62,7 +62,7 @@
         class="page-link"
         href="#"
         [routerLink]="[
-          '/',
+          '/products',
           currentPageNo + 1 >= totalPageNo ? totalPageNo : currentPageNo + 1
         ]"
         >&rsaquo;</a

@@ -1,11 +1,11 @@
-﻿using AuthApp.Domain.Entitites;
+﻿using OrderService.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuthApp.Application.Repositories
+namespace OrderService.Application.Repository
 {
     public interface IOrderWriteRepository : IWriteRepository<Order>
     {

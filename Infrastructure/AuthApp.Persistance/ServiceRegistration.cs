@@ -10,6 +10,7 @@ using AuthApp.Application.Repositories;
 using AuthApp.Persistance.Repositories;
 using AuthApp.Domain.Entitites.Identity;
 using AuthApp.Application.Abstraction;
+using System.Configuration;
 
 namespace AuthApp.Persistance
 {

@@ -15,7 +15,8 @@ namespace AuthApp.Persistance.Context
         public AuthAppDbContext(DbContextOptions options) : base(options) // optionları base e gönderen constructer
         { }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Order> Orders { get; set; } // Dbye karşılık gelen setler oluştursun verileri de order/product/customerdan alsn
+
+        // public DbSet<Order> Orders { get; set; } Dbye karşılık gelen setler oluştursun verileri de order/product/customerdan alsn
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Domain.Entitites.File> Files { get; set; }
         public DbSet<ProductImageFile> ProductImageFiles { get; set; }

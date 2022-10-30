@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\OrderService.Application\OrderService.Application.csproj" />
+    <ProjectReference Include="..\..\Core\OrderService.Domain\OrderService.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
